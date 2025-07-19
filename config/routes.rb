@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :posts
   get 'bookers/new'
   post 'bookers' => 'bookers#create'
-  get 'bookers/index'
+  get 'bookers/new'
   get 'bookers/show'
   get 'bookers/edit'
   get '/top' => "homes#top"

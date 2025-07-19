@@ -1,6 +1,13 @@
 class BookersController < ApplicationController
   def new
+    @bookers = Booker.all
     @booker = Booker.new
+  end
+
+  def create
+    booker = Booker.new(booker_params)
+    booker.save
+    redirect_to '/top'
   end
 
   def index
@@ -10,5 +17,10 @@ class BookersController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+  def booker_params
+    params.require(:booker).permit(:title, :body)
   end
 end
