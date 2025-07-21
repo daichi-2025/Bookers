@@ -1,0 +1,16 @@
+<h1>Books</h1>
+
+<% @bookers.each do |booker| %>
+
+  <p>title</p>
+  <span><%= booker.title %></span>
+
+  <p>body</p>
+  <span><%= booker.body %></span>
+
+  <%= link_to "Show", "/bookers/#{booker.id}"%>
+
+  <%= link_to "Edit", "/bookers/#{booker.id}" %>
+
+  <%= link_to "Destroy", "bookers/index" %>
+<% end %>
