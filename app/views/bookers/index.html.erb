@@ -8,9 +8,9 @@
   <p>body</p>
   <span><%= booker.body %></span>
 
-  <%= link_to "Show", "/bookers/#{booker.id}"%>
+  <%= link_to "Show", booker_path(booker.id) %>
 
-  <%= link_to "Edit", "/bookers/#{booker.id}" %>
+  <%= link_to "Edit", edit_booker_path(booker.id) %>
 
-  <%= link_to "Destroy", "bookers/index" %>
+  <%= link_to "Destroy", destroy_booker_path(@booker.id), method: :delete, "data-confirm" => "Are you sure?" %>
 <% end %>
