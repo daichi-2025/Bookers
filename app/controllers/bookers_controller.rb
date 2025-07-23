@@ -4,9 +4,13 @@ class BookersController < ApplicationController
   end
 
   def create
-    booker = Booker.new(booker_params)
-    booker.save
-    redirect_to booker_path(booker.id)
+    @booker = Booker.new(booker_params)
+    if @booker.save
+      flash[:notice] = "Book was successfully created."
+      redirect_to booker_path(booker.id)
+    else
+      render :new
+    end
   end
 
   def index
