@@ -1,0 +1,43 @@
+<h1>Books</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookers.each do |booker| %>
+    <tr>
+      <td><%= booker.title %></td>
+      <td><%= booker.body %></td>
+      <td><%= link_to "Show", book_path(booker.id) %></td>
+      <td><%= link_to "Edit", edit_book_path(booker.id) %></td>
+      <td><%= link_to "Destroy", book_path(booker.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>New book</h1>
+
+<% if @booker.errors.any? %>
+  <%= @booker.errors.count %>errors prohibited this book from being saved:
+  <ul>
+    <% @booker.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @booker, url: books_path do |f| %>
+  <h1>Title</h1>
+  <%= f.text_field :title %>
+
+  <h1>Body</h1>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+<% end %>
